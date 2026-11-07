@@ -27,7 +27,14 @@ This guide describes the public Workflow 1.0 API. Workflow coordinates scoped hu
 
 ## Install
 
-Use PHP 8.3 or newer with Laravel 12 or 13. Laravel's own platform requirements also apply. Create a fresh Laravel app using your normal Laravel installer, configure its database in `.env`, then install:
+Use PHP 8.3 or newer with Laravel 12 or 13. Laravel's own platform requirements also apply. For a fresh Laravel 13 application (choose `"^12.0"` for Laravel 12):
+
+```sh
+composer create-project laravel/laravel procurement "^13.0"
+cd procurement
+```
+
+Choose a disposable SQLite database for the walkthrough. Set `DB_CONNECTION=sqlite` and `DB_DATABASE` to the absolute path of this application's `database/database.sqlite` in `.env`; create that file if your Laravel installer did not create it. Keep `APP_TIMEZONE=UTC` / `app.timezone` and PHP's default timezone consistent. For MySQL, set the host/database/credentials through the host's normal private configuration instead. Then install:
 
 ```sh
 composer require mrnewport/laravel-workflow:^1.0
@@ -280,7 +287,14 @@ final class ProcurementPayloadValidator implements ActionValidator
 
 The code needs the contract/model imports shown above and `DefinitionPublisher`. Rejecting unknown keys explicitly avoids silently accepting authority-bearing properties. Keep pricing, budget authority and business invariants in the domain callback; validation alone cannot authorize spending.
 
-With optional `mrnewport/laravel-fields:^1.0`, register trusted schemas before resolving the manager:
+To use optional Fields, install it explicitly. If its stable tag is public but registry indexing is pending, configure its VCS repository as well:
+
+```sh
+composer config repositories.mrnewport-fields vcs https://github.com/MrNewport/laravel-fields
+composer require mrnewport/laravel-fields:^1.0
+```
+
+Register trusted schemas before resolving the manager:
 
 ```php
 use MrNewport\LaravelFields\{Field, Schema};

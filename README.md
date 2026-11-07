@@ -2,6 +2,8 @@
 
 Scoped, auditable human workflows powered by **`mrnewport/laravel-flow`**. This package coordinates ownership checks, immutable definitions, form validation, command replay and history. Flow performs the actual transitions and assignments.
 
+[**Interactive workshop →**](https://matthewnewport.com/packages/laravel-workflow/lab) — Try the connected procurement review with editable commands, validation and history.
+
 **Compatibility:** PHP 8.3+, Laravel 12 or 13, and Laravel Flow 2.2. Stable-version installation requires the corresponding public release tags; see the handbook for the VCS fallback when registry indexing is pending.
 
 Install the matching stable versions (see the handbook for the VCS fallback when registry indexing is pending):
