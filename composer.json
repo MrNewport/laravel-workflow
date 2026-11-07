@@ -1,0 +1,61 @@
+{
+    "name": "mrnewport/laravel-workflow",
+    "description": "Scoped, auditable human workflow coordination powered by Laravel Flow.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MrNewport"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^12.0 || ^13.0",
+        "illuminate/database": "^12.0 || ^13.0",
+        "illuminate/contracts": "^12.0 || ^13.0",
+        "illuminate/validation": "^12.0 || ^13.0",
+        "mrnewport/laravel-flow": "^2.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0 || ^11.0",
+        "phpunit/phpunit": "^11.5 || ^12.0",
+        "mockery/mockery": "^1.6",
+        "laravel/pint": "^1.32",
+        "larastan/larastan": "^3.14",
+        "mrnewport/laravel-fields": "^1.0"
+    },
+    "suggest": {
+        "mrnewport/laravel-fields": "Validated task payloads and optional Filament 5 forms."
+    },
+    "autoload": {
+        "psr-4": {
+            "MrNewport\\LaravelWorkflow\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MrNewport\\LaravelWorkflow\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrNewport\\LaravelWorkflow\\WorkflowServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "format": "pint",
+        "format:check": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@format:check",
+            "@analyse",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
